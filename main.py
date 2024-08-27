@@ -22,7 +22,7 @@ def send_files_and_question(files, question, training_data, first_message):
     # Conditionally include files only if it's the first message
     if first_message:
         files_to_send = [('files', (file.name, file, file.type)) for file in files]
-        response = requests.post(url, headers=headers, files=files_to_send, data={'data': json.dumps(data)})
+        response = requests.post(url, headers=headers, files=files_to_send, data=data)
     else:
         headers['Content-Type'] = 'application/json'
         response = requests.post(url, headers=headers, json=data)
